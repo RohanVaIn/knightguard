@@ -1,11 +1,14 @@
-import entities.Player;
+import scenes.AccountManagementScene;
+import scenes.CaptureTheFlagScene;
+import scenes.TownScene;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Objects;
 
 public class Main extends JFrame {
@@ -21,13 +24,15 @@ public class Main extends JFrame {
     public static boolean running = true;
     JPanel render;
     Thread thread;
-    public static Player playerEntity;
-    public static GameState gameState = GameState.TITLE;
+    public static volatile HashSet<Integer> keys = new HashSet<>();
+    public static volatile HashSet<Integer> buttons = new HashSet<>();
+//    public static Player playerEntity;
+    public static GameState gameState = GameState.TOWN;
     public Main() throws IOException {
         super("KNightGuard");
-        playerEntity = new Player();
+//        playerEntity = new Player();
 
-        BufferedImage temp = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/res/pb.png")));
+        BufferedImage temp = ImageIO.read(Objects.requireNonNull(Main.class.getResourceAsStream("/res/pb.png")));
 
         int screenWidth = 1920;
         int screenHeight = 1080;
@@ -62,17 +67,20 @@ public class Main extends JFrame {
 
                 /** -------------------------------- */
 
+                g2d.setColor(new Color(100,200,255,255));
+                g2d.fillRect(0, 0, screenWidth, screenHeight);
+
                 switch(gameState) {
                     case TITLE -> {
 
-                        break;
                     }
                     case TOWN -> {
-
+                        g2d.drawImage(TownScene.mainBackground, 0, 0, null);
+                        g2d.drawImage(TownScene.phatbilly, TownScene.tempx, TownScene.tempy, null);
                     }
-                    case MINIGAME_1 -> {
+                    case ACCOUNT_MANAGEMENT -> {
                     }
-                    case MINIGAME_2 -> {
+                    case CAPTURE_THE_FLAG -> {
                     }
                     case MINIGAME_3 -> {
                     }
@@ -82,8 +90,6 @@ public class Main extends JFrame {
                     }
                 }
 
-                g2d.setColor(new Color(100,200,255,255));
-                g2d.fillRect(0, 0, screenWidth, screenHeight);
 
                 /** -------------------------------- */
 
@@ -111,21 +117,74 @@ public class Main extends JFrame {
                     tick();
                 }
 
-//                if(running) {
-//                    render.repaint();
-//                }
+                if(running) {
+                    render.repaint();
+                }
             }
         });
         thread.start();
 
 
 //        this.setLocationRelativeTo(null);
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                System.out.println("handle closing");
+                running = false;
+                System.exit(0);
+            }
+        });
+        this.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                keys.add(e.getKeyCode());
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {
+                keys.remove(e.getKeyCode());
+            }
+        });
+        this.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                buttons.add(e.getButton());
+            }
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                buttons.remove(e.getButton());
+            }
+        });
+        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        this.setIconImage(ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/res/icon.png"))));
         this.setSize(new Dimension(screenWidth / 4, screenHeight / 4));
         this.setVisible(true);
     }
     public void tick() {
 
-        playerEntity.entityTick();
+        switch(gameState) {
+            case TITLE -> {
+            }
+            case TOWN -> {
+                if(keys.contains(KeyEvent.VK_A)) TownScene.tempx -= 6;
+                if(keys.contains(KeyEvent.VK_D)) TownScene.tempx += 6;
+                if(keys.contains(KeyEvent.VK_W)) TownScene.tempy -= 6;
+                if(keys.contains(KeyEvent.VK_S)) TownScene.tempy += 6;
+            }
+            case ACCOUNT_MANAGEMENT -> {
+                AccountManagementScene.tick();
+            }
+            case CAPTURE_THE_FLAG -> {
+                CaptureTheFlagScene.tick();
+            }
+            case MINIGAME_3 -> {
+            }
+            case MINIGAME_4 -> {
+            }
+            case MINIGAME_5 -> {
+            }
+        }
+//        playerEntity.entityTick();
+
     }
 //    public void render() {
 //        render.repaint();
