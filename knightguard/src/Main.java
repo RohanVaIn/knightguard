@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 public class Main extends JFrame {
     public static void main(String[] args) {
@@ -26,7 +27,7 @@ public class Main extends JFrame {
         super("KNightGuard");
         playerEntity = new Player();
 
-        BufferedImage temp = ImageIO.read(new File("res/pb.png"));
+        BufferedImage temp = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/res/pb.png")));
 
         int screenWidth = 1920;
         int screenHeight = 1080;
