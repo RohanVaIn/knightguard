@@ -16,7 +16,7 @@ We built it using Java, with drawings in Microsoft Paint
 We built it using Java :(
 
 # Accomplishments that we're proud of
-We're very proud of the front-end and the puzzle design. Our artist(blewis6) made a very visually appealing system that makes the game a lot more enjoyable to look at. The puzzle design was also an enjoyable and rewarding process, even if we weren't able to accomplish all the puzzles we set out to do.
+We're very proud of the front-end and the puzzle design. Our artist (blewis6) made a very visually appealing system that makes the game a lot more enjoyable to look at. The puzzle design was also an enjoyable and rewarding process, even if we weren't able to accomplish all the puzzles we set out to do.
 
 # What we learned
 We learned better project management skills, such as creating realistic scopes and organizing our time and ideas better. We also learned more about Java, as some of our group weren't as familiar with the language as others. Lastly, we learned how to balance the line between entertainment and education, making sure that the lessons weren't subtle enough for kids not to notice, but also subtle enough so that they would stay engaged.
