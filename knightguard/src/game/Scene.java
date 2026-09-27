@@ -8,5 +8,6 @@ public enum Scene {
     MALWARE_HUNTERS,
     FIREWALL_REPAIR,
     MINIGAME_5,
+    TOWN_CENTRE,
     SECRET_MAN,
 }

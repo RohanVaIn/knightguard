@@ -3,7 +3,12 @@ package game;
 public class GameState {
     public static int totalFlags = 0;
     public static boolean flagAccountManagement = false,
-    flagCaptureTheFlag = false,
-    flagMalwareHunter = false,
-    flagFirewallRepair = false;
+            flagCaptureTheFlag = false,
+            flagMalwareHunter = false,
+            flagFirewallRepair = false;
+    public static boolean completionistAccountManagement = false,
+            completionistCaptureTheFlag = false,
+            completionistMalwareHunter = false,
+            completionistFirewallRepair = false,
+            completionistSecretMan = false;
 }

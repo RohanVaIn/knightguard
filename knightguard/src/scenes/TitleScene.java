@@ -2,7 +2,7 @@ package scenes;
 
 import java.awt.*;
 
-public class CaptureTheFlagScene {
+public class TitleScene {
     public static void tick() {
 
     }
