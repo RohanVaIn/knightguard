@@ -30,7 +30,7 @@ public class LogsScene {
      */
     public static void tick() {
 
-        // FRONTEND TODO:
+        // FRONTEND
         //
         // Detect input here if desired.
         //

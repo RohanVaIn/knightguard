@@ -2,6 +2,7 @@ package game;
 
 import scenes.*;
 import scenes.Account.AccountManagementScene;
+import scenes.Malware.MalwareScene;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -185,7 +186,7 @@ public class Main extends JFrame {
                 CaptureTheFlagScene.tick();
             }
             case MALWARE_HUNTERS -> {
-                MalwareHunterScene.tick();
+                MalwareScene.tick();
             }
             case FIREWALL_REPAIR -> {
                 FirewallRepairScene.tick();

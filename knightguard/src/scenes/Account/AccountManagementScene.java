@@ -33,7 +33,7 @@ public class AccountManagementScene {
      */
     public static void tick() {
 
-        // FRONTEND TODO:
+        // FRONTEND
         //
         // Detect buttons / keyboard / mouse input here
         // and call submitAction().
