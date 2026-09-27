@@ -1,6 +1,6 @@
-import scenes.AccountManagementScene;
 import scenes.CaptureTheFlagScene;
 import scenes.TownScene;
+import scenes.Account.AccountManagementScene;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

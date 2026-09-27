@@ -1,6 +1,7 @@
 package game;
 
 import scenes.*;
+import scenes.Account.AccountManagementScene;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -29,7 +30,7 @@ public class Main extends JFrame {
     public static final Set<Integer> keys = Collections.synchronizedSet(new HashSet<>()), buttons = Collections.synchronizedSet(new HashSet<>());
     public static Set<Integer> keysPrevious = new HashSet<>(), buttonsPrevious = new HashSet<>();
     public static int mouseJFrameX, mouseJFrameY;
-    public static Scene currentScene = Scene.SECRET_MAN;
+    public static Scene currentScene = Scene.ACCOUNT_MANAGEMENT;
     public Main() throws IOException {
         int screenWidth = 1920;
         int screenHeight = 1080;
@@ -79,6 +80,7 @@ public class Main extends JFrame {
 //                        g2d.drawImage(TownScene.phatbilly, TownScene.tempx, TownScene.tempy, null);
                     }
                     case ACCOUNT_MANAGEMENT -> {
+                        
                     }
                     case CAPTURE_THE_FLAG -> {
                     }
